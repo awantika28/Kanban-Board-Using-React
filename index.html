@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="public\favicon.ico" />
+  <title>Your Kanban Board App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    #root {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .kanban-board {
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .ticket {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin: 8px 0;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .ticket:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Additional styles for ticket details */
+    .ticket-details {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .ticket-details h2 {
+      margin-top: 0;
+    }
+
+    /* Additional styles for grouping and sorting buttons */
+    .grouping-options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .grouping-option {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .grouping-option:hover {
+      background-color: #e0e0e0;
+    }
+
+    .sorting-options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .sorting-option {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .sorting-option:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="kanban-board">
+      <div class="grouping-options">
+        <div class="grouping-option" onclick="groupByStatus()">Group by Status</div>
+        <div class="grouping-option" onclick="groupByUser()">Group by User</div>
+        <div class="grouping-option" onclick="groupByPriority()">Group by Priority</div>
+      </div>
+      <div class="sorting-options">
+        <div class="sorting-option" onclick="sortByPriority()">Sort by Priority</div>
+        <div class="sorting-option" onclick="sortByTitle()">Sort by Title</div>
+      </div>
+      <div class="ticket" onclick="openTicket('Sample Ticket 1', 'This is the description of Sample Ticket 1', 2)">Sample Ticket 1</div>
+      <div class="ticket" onclick="openTicket('Sample Ticket 2', 'This is the description of Sample Ticket 2', 3)">Sample Ticket 2</div>
+      
+    </div>
+    <div class="ticket" data-status="To Do" onclick="openTicket('Sample Ticket 1', 'This is the description of Sample Ticket 1', 'High')">Sample Ticket 1</div>
+    <div class="ticket" data-status="In Progress" onclick="openTicket('Sample Ticket 2', 'This is the description of Sample Ticket 2', 'Medium')">Sample Ticket 2</div>
+
+
+  </div>
+
+  <script>
+    function openTicket(title, description, priority) {
+      const ticketDetailsBox = document.createElement('div');
+      ticketDetailsBox.className = 'ticket-details';
+      ticketDetailsBox.innerHTML = `
+        <h2>${title}</h2>
+        <p>${description}</p>
+        <p>Priority: ${priority}</p>
+      `;
+
+      document.body.appendChild(ticketDetailsBox);
+
+      ticketDetails
+      <script>
+    // ... (previously provided code)
+
+    function openTicket(title, description, priority) {
+      const ticketDetailsBox = document.createElement('div');
+      ticketDetailsBox.className = 'ticket-details';
+      ticketDetailsBox.innerHTML = `
+        <h2>${title}</h2>
+        <p>${description}</p>
+        <p>Priority: ${priority}</p>
+      `;
+
+      document.body.appendChild(ticketDetailsBox);
+
+      ticketDetailsBox.addEventListener('click', function () {
+        document.body.removeChild(ticketDetailsBox);
+      });
+    }
+
+    function groupByStatus() {
+      // You can implement the logic to group by status here
+      // Update the display accordingly
+    }
+
+    function groupByUser() {
+      // You can implement the logic to group by user here
+      // Update the display accordingly
+    }
+
+    function groupByPriority() {
+      // You can implement the logic to group by priority here
+      // Update the display accordingly
+    }
+
+    function sortByPriority() {
+      // You can implement the logic to sort by priority here
+      // Update the display accordingly
+    }
+
+    function sortByTitle() {
+      // You can implement the logic to sort by title here
+      // Update the display accordingly
+    }
+    function groupByStatus() {
+  const kanbanBoard = document.querySelector('.kanban-board');
+  const tickets = kanbanBoard.querySelectorAll('.ticket');
+  
+  // Clear the existing ticket groups
+  kanbanBoard.innerHTML = '';
+  
+  // Group tickets by status
+  const groupedTickets = {};
+
+  tickets.forEach(ticket => {
+    const status = ticket.getAttribute('data-status');
+    if (!groupedTickets[status]) {
+      groupedTickets[status] = [];
+    }
+    groupedTickets[status].push(ticket.outerHTML);
+  });
+
+  // Create new ticket groups based on status
+  Object.keys(groupedTickets).forEach(status => {
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'ticket-group';
+    groupDiv.innerHTML = `<h2>${status}</h2>`;
+    groupDiv.innerHTML += groupedTickets[status].join('');
+
+    kanbanBoard.appendChild(groupDiv);
+  });
+}
+
+  </script>
+</body>
+</html>
